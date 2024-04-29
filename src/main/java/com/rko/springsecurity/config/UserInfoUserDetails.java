@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,9 +20,10 @@ public class UserInfoUserDetails implements UserDetails {
     public UserInfoUserDetails(UserInfo userInfo) {
         username=userInfo.getUsername();
         password=userInfo.getPassword();
-        authorities= Arrays.stream(userInfo.getRoles().split(","))
+        authorities = Collections.singletonList(new SimpleGrantedAuthority(userInfo.getUsername()));
+     /*   authorities= Arrays.stream(userInfo.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
 
     }
 

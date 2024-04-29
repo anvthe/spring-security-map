@@ -1,4 +1,4 @@
-package com.rko.springsecurity.config;
+package com.rko.springsecurity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

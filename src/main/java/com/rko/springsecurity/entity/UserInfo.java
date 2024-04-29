@@ -2,13 +2,17 @@ package com.rko.springsecurity.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +32,7 @@ public class UserInfo {
     @Column(nullable = false)
     private String password;
 
-    private String roles;
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
 }
