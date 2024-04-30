@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Data
@@ -31,6 +30,8 @@ public class UserInfo {
 
     @Column(nullable = false)
     private String password;
+
+    private Boolean enabled;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;

@@ -1,5 +1,6 @@
 package com.rko.springsecurity.config.auth;
 
+import com.rko.springsecurity.dto.AuthenticationResponse;
 import com.rko.springsecurity.dto.RegisterRequest;
 import com.rko.springsecurity.entity.UserInfo;
 import com.rko.springsecurity.entity.UserRole;
@@ -22,6 +23,7 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .enabled(request.getEnabled())
                 .role(UserRole.ROLE_USER)
                 .build();
         repository.save(user);
