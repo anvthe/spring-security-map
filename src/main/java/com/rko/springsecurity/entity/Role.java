@@ -1,6 +1,6 @@
 package com.rko.springsecurity.entity;
 
-public enum UserRole {
+public enum Role {
     ROLE_USER,
-    ROLE_ADMIN
+    USER, ROLE_ADMIN
 }
