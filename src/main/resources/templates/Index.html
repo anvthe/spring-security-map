@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Maps Search</title>
+</head>
+<body>
+<form action="/search" method="post">
+  <input type="text" name="locationName" placeholder="Enter location name">
+
+  <input type="text" name="drugName" placeholder="Enter drug name">
+  <button type="submit">Search</button>
+</form>
+<div id="map"></div>
+</body>
+</html>
