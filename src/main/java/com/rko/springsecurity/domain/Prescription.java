@@ -27,11 +27,11 @@ public class Prescription {
 
     @ManyToMany
     @JoinTable(
-            name = "prescription_drug",
+            name = "prescription_brand",
             joinColumns = @JoinColumn(name = "prescription_id"),
-            inverseJoinColumns = @JoinColumn(name = "drug_id")
+            inverseJoinColumns = @JoinColumn(name = "brand_id")
     )
-    private List<Drug> drugs;
+    private List<Brand> brands;
 
     // Constructors, getters, and setters
 }

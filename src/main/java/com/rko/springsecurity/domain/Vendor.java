@@ -17,7 +17,7 @@ public class Vendor {
     private String name;
 
     @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
-    private List<Drug> drugs;
+    private List<Brand> brands;
 }
 
 

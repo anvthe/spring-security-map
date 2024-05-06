@@ -18,7 +18,7 @@ public class Generic {
     private String name;
 
     @OneToMany(mappedBy = "generic", cascade = CascadeType.ALL)
-    private List<Drug> drugs;
+    private List<Brand> brands;
 
     @ManyToOne
     @JoinColumn(name = "location_id")

@@ -18,7 +18,7 @@ public class Location {
     private double longitude;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
-    private List<Drug> drugs;
+    private List<Brand> brands;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
     private List<Generic> generics;

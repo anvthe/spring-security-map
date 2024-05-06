@@ -15,7 +15,7 @@ public class Doctor {
     @NotBlank
     private String name;
 
-    @Column(unique = true)
+    @Column(name = "bmdc_no", unique = true)
     @NotBlank(message = "BMDC no is mandatory")
     private String bmdcNo;
 
