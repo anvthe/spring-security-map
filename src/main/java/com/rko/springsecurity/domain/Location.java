@@ -7,13 +7,13 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "location")
+@Table(name = "locations")
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "location_name")
+    @Column(name = "location_name", unique = true)
     private String locationName;
     private double latitude;
     private double longitude;

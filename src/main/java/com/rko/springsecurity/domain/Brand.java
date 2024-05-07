@@ -6,13 +6,13 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "brand")
+@Table(name = "brands")
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "brand_name")
+    @Column(name = "brand_name", unique = true)
     @NotBlank
     private String brandName;
     private String description;
@@ -25,9 +25,9 @@ public class Brand {
     @JoinColumn(name = "generic_id")
     private Generic generic;
 
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name = "location_id")
-    private Location location;
+    private Location location;*/
 
     // Constructors, getters, and setters
 }

@@ -20,27 +20,20 @@ public class SearchService {
     @Autowired
     private PrescriptionService prescriptionService;
 
-    @Autowired
-    private PrescriptionRepository prescriptionRepository;
-
 
     public SearchResultDTO searchBrandNameByLocation(String brandName, String locationName) {
-
         SearchResultDTO result = new SearchResultDTO();
-
         String brand = brandService.getBrandByName(brandName);
         if (brand == null) {
             result.setError("Brand not found");
             return result;
         }
 
-
         Location location = locationService.getLocationByName(locationName);
         if (location == null) {
             result.setError("Location not found");
             return result;
         }
-
 
         int brandUsersCount = prescriptionService.countUsersByBrandAndLocation(brandName, locationName);
 
