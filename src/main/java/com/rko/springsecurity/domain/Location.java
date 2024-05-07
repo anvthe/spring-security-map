@@ -13,15 +13,16 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(name = "location_name")
+    private String locationName;
     private double latitude;
     private double longitude;
 
-    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
-    private List<Brand> brands;
+/* @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+    private List<Brand> brands;*/
 
-    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
-    private List<Generic> generics;
+   /* @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+    private List<Generic> generics;*/
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
     private List<Prescription> prescriptions;

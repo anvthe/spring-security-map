@@ -71,7 +71,7 @@ CREATE TABLE brand_prescription (
 );
 
 
-INSERT INTO location (name, latitude, longitude) VALUES
+INSERT INTO location (location_name, latitude, longitude) VALUES
                                              ('Gulshan-1', 23.7806615, 90.4112899),
                                              ('Banani', 23.7947552, 90.3954059),
                                              ('Dhanmondi', 23.7470303, 90.3655623),
@@ -169,7 +169,7 @@ VALUES
     (2419, 1),
     (2419, 1);
 
-INSERT INTO brand (name,description,vendor_id, generic_id) VALUES
+INSERT INTO brand (brand_name,description,vendor_id, generic_id) VALUES
                                                                      ('Indever', NULL, 1, NULL),
                                                                      ('Abetis', NULL, 1, NULL),
                                                                      ('Feglo-FZ', NULL, 1, NULL),

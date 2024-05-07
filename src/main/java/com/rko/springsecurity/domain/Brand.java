@@ -12,8 +12,9 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "brand_name")
     @NotBlank
-    private String name;
+    private String brandName;
     private String description;
 
     @ManyToOne
