@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.List;
 @Data
 @Entity
-@Table(name = "doctor")
+@Table(name = "doctors")
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class Doctor {
     @NotBlank
     private String name;
 
-    @Column(name = "bmdc_no", unique = true)
+    @Column(name = "doctor_bmdc", unique = true)
     @NotBlank(message = "BMDC no is mandatory")
     private String bmdcNo;
 

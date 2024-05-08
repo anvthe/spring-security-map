@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "generic")
+@Table(name = "generics")
 public class Generic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +20,9 @@ public class Generic {
     @OneToMany(mappedBy = "generic", cascade = CascadeType.ALL)
     private List<Brand> brands;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "location_id")
-    private Location location;
+    private Location location;*/
 
     // Constructors, getters, and setters
 }

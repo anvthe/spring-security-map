@@ -10,8 +10,8 @@ public class PrescriptionService {
     @Autowired
     private PrescriptionRepository prescriptionRepository;
 
-    public int countUsersByBrandAndLocation(String brandName, String locationName) {
-        return prescriptionRepository.countUsersByBrandAndLocation(brandName, locationName);
+    public int getBrandCountInLocation(String brandName, String locationName) {
+        return prescriptionRepository.getBrandCount(brandName, locationName);
     }
 
 }

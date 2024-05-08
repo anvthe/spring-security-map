@@ -26,7 +26,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/auth/**")
                         .permitAll()
-                        .requestMatchers("/demo-controller","/auth/login","auth/register").authenticated()
+                        .requestMatchers("/demo-controller","/auth/login","auth/register,","/search").authenticated()
                 )
 
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
