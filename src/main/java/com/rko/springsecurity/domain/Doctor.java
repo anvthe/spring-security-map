@@ -2,11 +2,17 @@ package com.rko.springsecurity.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
+
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "doctors")
 public class Doctor {
     @Id
@@ -19,8 +25,11 @@ public class Doctor {
     @NotBlank(message = "BMDC no is mandatory")
     private String bmdcNo;
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
-    private List<Prescription> prescriptions;
+   /* @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<Prescription> prescriptions;*/
+
+    @OneToMany(mappedBy = "doctor", fetch = FetchType.EAGER)
+    private Set<Prescription> prescriptions;
 
     // Constructors, getters, and setters
 }

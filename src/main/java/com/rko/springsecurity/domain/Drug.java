@@ -2,19 +2,23 @@ package com.rko.springsecurity.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "brand")
-public class Brand {
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "drugs")
+public class Drug {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "brand_name")
+    @Column(name = "drug_name")
     @NotBlank
-    private String brandName;
+    private String drugName;
     private String description;
 
     @ManyToOne
@@ -25,9 +29,9 @@ public class Brand {
     @JoinColumn(name = "generic_id")
     private Generic generic;
 
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name = "location_id")
-    private Location location;
+    private Location location;*/
 
     // Constructors, getters, and setters
 }

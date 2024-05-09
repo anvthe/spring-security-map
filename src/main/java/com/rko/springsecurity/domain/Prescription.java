@@ -1,12 +1,16 @@
 package com.rko.springsecurity.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "prescriptions")
 public class Prescription {
     @Id
@@ -14,12 +18,12 @@ public class Prescription {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-
-    @ManyToOne
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 
     @ManyToOne
     @JoinColumn(name = "location_id")
@@ -27,11 +31,11 @@ public class Prescription {
 
     @ManyToMany
     @JoinTable(
-            name = "prescription_brands",
+            name = "prescription_drugs",
             joinColumns = @JoinColumn(name = "prescription_id"),
-            inverseJoinColumns = @JoinColumn(name = "brand_id")
+            inverseJoinColumns = @JoinColumn(name = "drug_id")
     )
-    private List<Brand> brands;
+    private List<Drug> drugs;
 
     // Constructors, getters, and setters
 }

@@ -1,14 +1,14 @@
 package com.rko.springsecurity.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
-@Setter
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "locations")
 public class Location {
@@ -27,8 +27,11 @@ public class Location {
    /* @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
     private List<Generic> generics;*/
 
-    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
-    private List<Prescription> prescriptions;
+  /*  @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+    private List<Prescription> prescriptions;*/
+
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
+    private Set<Prescription> prescriptions;
 
     // Constructors, getters, and setters
 }

@@ -2,17 +2,14 @@ package com.rko.springsecurity.service;
 
 import com.rko.springsecurity.domain.Location;
 import com.rko.springsecurity.dto.SearchResultDTO;
-import com.rko.springsecurity.repository.PrescriptionRepository;
-import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class SearchService {
     @Autowired
-    private BrandService brandService;
+    private DrugService drugService;
 
     @Autowired
     private LocationService locationService;
@@ -20,32 +17,51 @@ public class SearchService {
     @Autowired
     private PrescriptionService prescriptionService;
 
-    @Autowired
-    private PrescriptionRepository prescriptionRepository;
+        public SearchResultDTO searchDrugNameByLocationName(String drugName, String locationName){
+            SearchResultDTO result = new SearchResultDTO();
+            String drug = drugService.getDrugByName(drugName);
+            if (drug == null) {
+                result.setError("Drug not found");
+                return result;
+            }
 
+            Location location = locationService.getLocationByName(locationName);
+            if (location == null) {
+                result.setError("Location not found");
+                return result;
+            }
 
-    public SearchResultDTO searchBrandNameByLocation(String brandName, String locationName) {
+            int drugUsersCount = prescriptionService.countUsersByDrugNameAndLocationName(drugName, locationName);
 
-        SearchResultDTO result = new SearchResultDTO();
-
-        String brand = brandService.getBrandByName(brandName);
-        if (brand == null) {
-            result.setError("Brand not found");
+            result.setBrandUsersCount(drugUsersCount);
+            result.setLocation(location);
+            result.setDrugName(drug);
             return result;
         }
 
 
-        Location location = locationService.getLocationByName(locationName);
+
+
+/*    public SearchResultDTO searchDrugIdByLocationId(Long drugId, Long locationId){
+        SearchResultDTO result = new SearchResultDTO();
+        Long drug = drugService.getDrugById(drugId);
+        if (drug == null) {
+            result.setError("Brand not found");
+            return result;
+        }
+
+        Long location = locationService.getLocationById(locationId);
         if (location == null) {
             result.setError("Location not found");
             return result;
         }
 
+        int drugUsersCount = prescriptionService.countUsersByDrugIdAndLocationId(drugId, locationId);
 
-        int brandUsersCount = prescriptionService.countUsersByBrandAndLocation(brandName, locationName);
-
-        result.setBrandUsersCount(brandUsersCount);
-        result.setLocation(location);
+        result.setBrandUsersCount(drugUsersCount);
+        result.setLocation(locationId)
         return result;
+    }*/
+
+
     }
-}

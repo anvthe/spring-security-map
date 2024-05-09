@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping()
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final UserRepository userRepository;

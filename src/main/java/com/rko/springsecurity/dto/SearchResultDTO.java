@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SearchResultDTO {
     private int brandUsersCount;
+    private String drugName;
     private Location location;
     private String error;
 }
