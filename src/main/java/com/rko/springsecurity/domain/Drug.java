@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -32,6 +34,9 @@ public class Drug {
    /* @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;*/
+
+   /* @OneToMany(mappedBy = "drug", fetch = FetchType.EAGER)
+    private Set<Prescription> prescriptions;*/
 
     // Constructors, getters, and setters
 }

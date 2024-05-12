@@ -1,9 +1,12 @@
 package com.rko.springsecurity.service;
 
+import com.rko.springsecurity.domain.Drug;
 import com.rko.springsecurity.domain.Location;
 import com.rko.springsecurity.dto.SearchResultDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -42,26 +45,45 @@ public class SearchService {
 
 
 
-/*    public SearchResultDTO searchDrugIdByLocationId(Long drugId, Long locationId){
+    public SearchResultDTO searchByDrugIdAndLocationId(Long drugId, Long locationId) {
         SearchResultDTO result = new SearchResultDTO();
-        Long drug = drugService.getDrugById(drugId);
+
+        // Check if drug with the given ID exists
+        Drug drug = drugService.getDrugById(drugId);
         if (drug == null) {
             result.setError("Brand not found");
             return result;
         }
 
-        Long location = locationService.getLocationById(locationId);
+
+        Location location = locationService.getLocationById(locationId);
         if (location == null) {
             result.setError("Location not found");
             return result;
         }
 
+
         int drugUsersCount = prescriptionService.countUsersByDrugIdAndLocationId(drugId, locationId);
 
+
         result.setBrandUsersCount(drugUsersCount);
-        result.setLocation(locationId)
+        //result.setDrug(drug); // Optionally set the drug
+        result.setLocation(location); // Optionally set the location
+
         return result;
-    }*/
-
-
     }
+
+
+
+
+
+
+    public List<Drug> getAllDrugs() {
+        // Delegate drug retrieval to DrugService
+        return drugService.getAllDrugs();
+    }
+
+    public List<Location> getAllLocations() {
+        return locationService.getAllLocations();
+    }
+}

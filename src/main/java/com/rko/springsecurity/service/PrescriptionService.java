@@ -14,8 +14,8 @@ public class PrescriptionService {
         return prescriptionRepository.countUsersByDrugNameAndLocationName(drugName, locationName);
     }
 
- /*   public int countUsersByDrugIdAndLocationId(Long drugId, Long locationId) {
+    public int countUsersByDrugIdAndLocationId(Long drugId, Long locationId) {
         return prescriptionRepository.countUsersByDrugIdAndLocationId(drugId, locationId);
-    }*/
+    }
 
 }

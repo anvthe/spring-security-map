@@ -13,8 +13,8 @@ public interface PrescriptionRepository extends JpaRepository<Prescription, Long
 
 
 
-  /*  @Query("SELECT COUNT(p) FROM Prescription p JOIN p.drugs b JOIN p.location l WHERE b.id = :drugId AND l.id = :locationId")
-    int countUsersByDrugIdAndLocationId(@Param("drugId") Long drugId, @Param("locationId") Long locationId);*/
+    @Query("SELECT COUNT(p) FROM Prescription p JOIN p.drugs b JOIN p.location l WHERE b.id = :drugId AND l.id = :locationId")
+    int countUsersByDrugIdAndLocationId(@Param("drugId") Long drugId, @Param("locationId") Long locationId);
 
    /* @Query(value = "SELECT COUNT(p) FROM Prescription p JOIN p.brands b JOIN p.location l WHERE b.brandName = :brandName AND l.locationName = :locationName")
     int countUsersByBrandNameAndLocationName(String brandName, String locationName);*/

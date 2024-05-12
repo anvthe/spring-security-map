@@ -5,6 +5,7 @@ import com.rko.springsecurity.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,8 +18,13 @@ public class LocationService {
         return optionalLocation.orElse(null);
     }
 
-/*    public Long getLocationById(Long locationId){
-        Optional<Location> optionalLocation = locationRepository.findByLocationId(locationId);
-        return optionalLocation.map(Location::getId).orElse(null);
-    }*/
+    public Location getLocationById(Long locationId) {
+        Optional<Location> optionalLocation = locationRepository.findById(locationId);
+        return optionalLocation.orElse(null);
+    }
+
+
+    public List<Location> getAllLocations() {
+        return (List<Location>) locationRepository.findAll();
+    }
 }

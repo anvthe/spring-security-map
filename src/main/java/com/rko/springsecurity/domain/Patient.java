@@ -23,6 +23,9 @@ public class Patient {
     private String name;
     @Column(unique = true) @NotBlank
     private String phone;
+    @NotBlank
+    private int age;
+
 
    /* @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Prescription> prescriptions;*/
