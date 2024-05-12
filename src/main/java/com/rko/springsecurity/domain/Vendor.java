@@ -20,7 +20,7 @@ public class Vendor {
     @NotBlank
     private String name;
 
-    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Drug> drugs;
 }
 

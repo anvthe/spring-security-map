@@ -1,3 +1,4 @@
+/*
 package com.rko.springsecurity.service;
 
 import com.rko.springsecurity.domain.Vendor;
@@ -22,3 +23,4 @@ public class VendorService {
         return vendor;
     }
 }
+*/

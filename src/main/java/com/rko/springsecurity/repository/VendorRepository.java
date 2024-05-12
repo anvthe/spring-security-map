@@ -1,3 +1,4 @@
+/*
 package com.rko.springsecurity.repository;
 
 import com.rko.springsecurity.domain.Vendor;
@@ -12,3 +13,4 @@ public interface VendorRepository extends JpaRepository<Vendor, Long> {
     @Query("SELECT DISTINCT v FROM Vendor v LEFT JOIN FETCH v.drugs")
     List<Vendor> findAllWithDrugs();
 }
+*/

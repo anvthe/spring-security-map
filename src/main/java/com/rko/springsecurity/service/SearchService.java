@@ -2,7 +2,9 @@ package com.rko.springsecurity.service;
 
 import com.rko.springsecurity.domain.Drug;
 import com.rko.springsecurity.domain.Location;
+import com.rko.springsecurity.domain.Prescription;
 import com.rko.springsecurity.dto.SearchResultDTO;
+import com.rko.springsecurity.repository.PrescriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +21,10 @@ public class SearchService {
 
     @Autowired
     private PrescriptionService prescriptionService;
+    @Autowired
+    private PrescriptionRepository prescriptionRepository;
 
-        public SearchResultDTO searchDrugNameByLocationName(String drugName, String locationName){
+    public SearchResultDTO searchDrugNameByLocationName(String drugName, String locationName){
             SearchResultDTO result = new SearchResultDTO();
             String drug = drugService.getDrugByName(drugName);
             if (drug == null) {
@@ -66,9 +70,14 @@ public class SearchService {
         int drugUsersCount = prescriptionService.countUsersByDrugIdAndLocationId(drugId, locationId);
 
 
+
+        //List<Prescription> prescriptions = prescriptionRepository.findByDrugIdAndLocationId(drugId, locationId);
+
+
+        //result.setBrandUsersCount(prescriptions.size());
         result.setBrandUsersCount(drugUsersCount);
-        //result.setDrug(drug); // Optionally set the drug
-        result.setLocation(location); // Optionally set the location
+        result.setDrugName(drug.getDrugName());
+        result.setLocation(location);
 
         return result;
     }
@@ -79,7 +88,6 @@ public class SearchService {
 
 
     public List<Drug> getAllDrugs() {
-        // Delegate drug retrieval to DrugService
         return drugService.getAllDrugs();
     }
 

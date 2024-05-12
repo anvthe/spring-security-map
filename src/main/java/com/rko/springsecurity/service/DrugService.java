@@ -13,8 +13,8 @@ public class DrugService {
     @Autowired
     private DrugRepository drugRepository;
 
-    @Autowired
-    private VendorService vendorService;
+   /* @Autowired
+    private VendorService vendorService;*/
 
     public String getDrugByName(String drugName) {
         Optional<Drug> drugOptional = drugRepository.findByDrugName(drugName);

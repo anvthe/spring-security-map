@@ -39,7 +39,6 @@ public class SearchController {
 
     @GetMapping("/drugs")
     public List<Drug> getAllDrugs() {
-        // Delegate drug retrieval to SearchService
         return searchService.getAllDrugs();
 
     }
