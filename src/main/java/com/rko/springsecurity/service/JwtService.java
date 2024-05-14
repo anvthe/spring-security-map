@@ -6,9 +6,15 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
+//new added
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
+
 import org.springframework.security.core.userdetails.UserDetails;
 
 import org.springframework.stereotype.Service;
+
 
 import java.security.Key;
 import java.util.*;
@@ -43,6 +49,7 @@ public class JwtService {
             Map<String, Object> extractClaims,
             UserDetails userDetails
     )
+
     {
         return Jwts
                 .builder()
@@ -71,6 +78,7 @@ public class JwtService {
                 .parseClaimsJws(token)
                 .getBody();
     }
+
 
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);

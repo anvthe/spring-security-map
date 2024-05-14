@@ -56,9 +56,9 @@ public class AuthenticationController {
     }*/
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
+    public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest request) {
         try {
-            AuthenticationResponse response = service.authenticate(request);
+            String  response = service.authenticate(request);
             return ResponseEntity.ok(response);
         } catch (UsernameNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new AuthenticationResponse("User not found"));

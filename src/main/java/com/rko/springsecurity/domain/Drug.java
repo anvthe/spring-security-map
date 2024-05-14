@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -20,7 +18,7 @@ public class Drug {
 
     @Column(name = "drug_name")
     @NotBlank
-    private String drugName;
+    private String name;
     private String description;
 
     @ManyToOne
@@ -31,7 +29,11 @@ public class Drug {
     @JoinColumn(name = "generic_id")
     private Generic generic;
 
-   /* @ManyToOne
+ /*   public @NotBlank String getName() {
+        return name;
+    }*/
+
+    /* @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;*/
 

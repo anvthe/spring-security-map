@@ -1,7 +1,7 @@
 package com.rko.springsecurity.controller;
 
-import com.rko.springsecurity.domain.Drug;
-import com.rko.springsecurity.domain.Location;
+import com.rko.springsecurity.dto.DrugDTO;
+import com.rko.springsecurity.dto.LocationDTO;
 import com.rko.springsecurity.dto.SearchResultDTO;
 import com.rko.springsecurity.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/search")
+@RequestMapping("/map")
 public class SearchController {
     @Autowired
     private SearchService searchService;
 
     @GetMapping()
     public ResponseEntity<SearchResultDTO> search(
-            @RequestParam("drugName") String drugName,
-            @RequestParam("locationName") String locationName) {
-        SearchResultDTO result = searchService.searchDrugNameByLocationName(drugName, locationName);
+            @RequestParam("locationName") String locationName,
+            @RequestParam("drugName") String drugName) {
+        SearchResultDTO result = searchService.searchDrugNameByLocationName(locationName, drugName);
         if (result == null) {
             return ResponseEntity.notFound().build();
         }
@@ -29,8 +29,8 @@ public class SearchController {
 
 
     @GetMapping("/id")
-    public ResponseEntity<SearchResultDTO> search(@RequestParam Long drugId, @RequestParam Long locationId) {
-        SearchResultDTO result = searchService.searchByDrugIdAndLocationId(drugId, locationId);
+    public ResponseEntity<SearchResultDTO> search(@RequestParam Long locationId, @RequestParam Long drugId) {
+        SearchResultDTO result = searchService.searchByDrugIdAndLocationId(locationId, drugId);
         if (result == null) {
             return ResponseEntity.notFound().build();
         }
@@ -38,13 +38,13 @@ public class SearchController {
     }
 
     @GetMapping("/drugs")
-    public List<Drug> getAllDrugs() {
+    public List<DrugDTO> getAllDrugs() {
         return searchService.getAllDrugs();
 
     }
 
     @GetMapping("/locations")
-    public List<Location> getAllLocations() {
+    public List<LocationDTO> getAllLocations() {
         return searchService.getAllLocations();
 
     }

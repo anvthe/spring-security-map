@@ -71,7 +71,7 @@ CREATE TABLE brand_prescription (
 );
 
 
-INSERT INTO location (location_name, latitude, longitude) VALUES
+INSERT INTO locations (location_name, latitude, longitude) VALUES
                                              ('Gulshan-1', 23.7806615, 90.4112899),
                                              ('Banani', 23.7947552, 90.3954059),
                                              ('Dhanmondi', 23.7470303, 90.3655623),
@@ -81,7 +81,7 @@ INSERT INTO location (location_name, latitude, longitude) VALUES
 
 
 
-INSERT INTO generic (name) VALUES
+INSERT INTO generics (name) VALUES
                                ('Aceclofenac'),
                                ('Ambroxol-Hydrochloride'),
                                ('Amlodipine-Besylate'),
@@ -102,7 +102,7 @@ INSERT INTO generic (name) VALUES
 
 
 
-INSERT INTO vendor (name) VALUES
+INSERT INTO vendors (name) VALUES
                                ('ACI-Limited'),
                                ('ACME-Laboratories-Ltd'),
                                ('Ad-din-Pharmaceuticals-Ltd'),
@@ -120,7 +120,7 @@ INSERT INTO vendor (name) VALUES
 
 
 
-INSERT INTO doctor (name, bmdc_no) VALUES
+INSERT INTO doctors (name, bmdc_no) VALUES
                                     ('Dr. Ashraful Islam', FLOOR(RAND() * (9999 - 1000 + 1)) + 1000),
                                     ('Dr. Zahid Hossain', FLOOR(RAND() * (9999 - 1000 + 1)) + 1000),
                                     ('Dr. Omar Ahmed', FLOOR(RAND() * (9999 - 1000 + 1)) + 1000),
@@ -132,7 +132,7 @@ INSERT INTO doctor (name, bmdc_no) VALUES
                                     ('Dr. Reza Miah', FLOOR(RAND() * (9999 - 1000 + 1)) + 1000),
                                     ('Dr. Hasan Chowdhury', FLOOR(RAND() * (9999 - 1000 + 1)) + 1000);
 
-INSERT INTO patient (name, phone)
+INSERT INTO patients (name, phone)
 VALUES
     ('John Doe', '01234567890'),
     ('Alice Smith', '09876543210'),
@@ -169,7 +169,7 @@ VALUES
     (2419, 1),
     (2419, 1);
 
-INSERT INTO brand (brand_name,description,vendor_id, generic_id) VALUES
+INSERT INTO brands (brand_name,description,vendor_id, generic_id) VALUES
                                                                      ('Indever', NULL, 1, NULL),
                                                                      ('Abetis', NULL, 1, NULL),
                                                                      ('Feglo-FZ', NULL, 1, NULL),

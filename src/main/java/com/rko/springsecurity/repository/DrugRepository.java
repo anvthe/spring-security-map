@@ -8,8 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface DrugRepository extends JpaRepository<Drug, Long> {
-    Optional<Drug> findByDrugName(String drugName);
-
+    Optional<Drug> findByName(String drugName);
 
     Optional<Drug> findById(Long drugId);
 }

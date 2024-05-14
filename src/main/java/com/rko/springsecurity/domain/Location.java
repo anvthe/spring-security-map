@@ -3,7 +3,6 @@ package com.rko.springsecurity.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -17,7 +16,7 @@ public class Location {
     private Long id;
 
     @Column(name = "location_name", unique = true)
-    private String locationName;
+    private String name;
     private double latitude;
     private double longitude;
 

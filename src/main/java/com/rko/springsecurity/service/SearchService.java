@@ -2,7 +2,8 @@ package com.rko.springsecurity.service;
 
 import com.rko.springsecurity.domain.Drug;
 import com.rko.springsecurity.domain.Location;
-import com.rko.springsecurity.domain.Prescription;
+import com.rko.springsecurity.dto.DrugDTO;
+import com.rko.springsecurity.dto.LocationDTO;
 import com.rko.springsecurity.dto.SearchResultDTO;
 import com.rko.springsecurity.repository.PrescriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,8 @@ public class SearchService {
     @Autowired
     private PrescriptionRepository prescriptionRepository;
 
-    public SearchResultDTO searchDrugNameByLocationName(String drugName, String locationName){
+    public SearchResultDTO searchDrugNameByLocationName(String locationName, String drugName){
             SearchResultDTO result = new SearchResultDTO();
-            String drug = drugService.getDrugByName(drugName);
-            if (drug == null) {
-                result.setError("Drug not found");
-                return result;
-            }
 
             Location location = locationService.getLocationByName(locationName);
             if (location == null) {
@@ -38,9 +34,15 @@ public class SearchService {
                 return result;
             }
 
-            int drugUsersCount = prescriptionService.countUsersByDrugNameAndLocationName(drugName, locationName);
+            String drug = drugService.getDrugByName(drugName);
+            if (drug == null) {
+            result.setError("Drug not found");
+            return result;
+            }
 
-            result.setBrandUsersCount(drugUsersCount);
+            int drugUsersCount = prescriptionService.countUsersByDrugNameAndLocationName(locationName, drugName);
+
+            result.setDrugUsersCount(drugUsersCount);
             result.setLocation(location);
             result.setDrugName(drug);
             return result;
@@ -49,8 +51,14 @@ public class SearchService {
 
 
 
-    public SearchResultDTO searchByDrugIdAndLocationId(Long drugId, Long locationId) {
+    public SearchResultDTO searchByDrugIdAndLocationId(Long locationId, Long drugId) {
         SearchResultDTO result = new SearchResultDTO();
+
+        Location location = locationService.getLocationById(locationId);
+        if (location == null) {
+            result.setError("Location not found");
+            return result;
+        }
 
         // Check if drug with the given ID exists
         Drug drug = drugService.getDrugById(drugId);
@@ -60,14 +68,9 @@ public class SearchService {
         }
 
 
-        Location location = locationService.getLocationById(locationId);
-        if (location == null) {
-            result.setError("Location not found");
-            return result;
-        }
 
 
-        int drugUsersCount = prescriptionService.countUsersByDrugIdAndLocationId(drugId, locationId);
+        int drugUsersCount = prescriptionService.countUsersByDrugIdAndLocationId(locationId, drugId);
 
 
 
@@ -75,8 +78,8 @@ public class SearchService {
 
 
         //result.setBrandUsersCount(prescriptions.size());
-        result.setBrandUsersCount(drugUsersCount);
-        result.setDrugName(drug.getDrugName());
+        result.setDrugUsersCount(drugUsersCount);
+        result.setDrugName(drug.getName());
         result.setLocation(location);
 
         return result;
@@ -87,11 +90,11 @@ public class SearchService {
 
 
 
-    public List<Drug> getAllDrugs() {
+    public List<DrugDTO> getAllDrugs() {
         return drugService.getAllDrugs();
     }
 
-    public List<Location> getAllLocations() {
+    public List<LocationDTO> getAllLocations() {
         return locationService.getAllLocations();
     }
 }

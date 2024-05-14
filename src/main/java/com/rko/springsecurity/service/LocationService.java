@@ -1,6 +1,7 @@
 package com.rko.springsecurity.service;
 
 import com.rko.springsecurity.domain.Location;
+import com.rko.springsecurity.dto.LocationDTO;
 import com.rko.springsecurity.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,8 @@ public class LocationService {
     @Autowired
     private LocationRepository locationRepository;
 
-    public Location getLocationByName(String locationName){
-        Optional<Location> optionalLocation = locationRepository.findByLocationName(locationName);
+    public Location getLocationByName(String name){
+        Optional<Location> optionalLocation = locationRepository.findByName(name);
         return optionalLocation.orElse(null);
     }
 
@@ -24,7 +25,11 @@ public class LocationService {
     }
 
 
-    public List<Location> getAllLocations() {
-        return (List<Location>) locationRepository.findAll();
+    public List<LocationDTO> getAllLocations() {
+        return locationRepository.findAll()
+                .stream()
+                .map(location -> new LocationDTO(location.getName(),location.getLatitude(),location.getLatitude()))
+                .toList();
     }
+
 }
